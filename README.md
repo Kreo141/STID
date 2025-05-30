@@ -22,7 +22,7 @@ Check it out here: [STID](https://stid.ct.ws/)
 * PHP (Backend)
 * MySQL (Database)
 * Cloudinary (Media hosting, if applicable)
-* MSAL.js (if using Microsoft login integration)
+* MSAL.js (Microsoft login integration)
 
 ## 📚 About
 
