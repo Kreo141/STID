@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STID Admin Dashboard</title>
+    <link rel="stylesheet" href="../../resources/css/dashboard.css">
+    <!-- BOOTY strap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>STID ADMIN</h1>
+            <h1 id="studentCounter">Students: 0</h1>
+            <div class="user-profile">
+                <span class="admin-name">Admin</span>
+                <button class="btn btn-outline-dark btn-sm logout-btn" id="logoutBtn">Logout</button>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <div class="nav-item active" data-section="slideshow">
+                <i class="fas fa-images"></i>
+                <span>SLIDESHOW</span>
+            </div>
+            <div class="nav-item" data-section="events">
+                <i class="fas fa-calendar-alt"></i>
+                <span>EVENTS</span>
+            </div>
+            <div class="nav-item" data-section="gallery">
+                <i class="fas fa-photo-video"></i>
+                <span>GALLERY</span>
+            </div>
+            <div class="nav-item" data-section="attendance">
+                <i class="fas fa-user-check"></i>
+                <span>MANAGE ATTENDANCE</span>
+            </div>
+        </nav>
+
+        <main class="dashboard-content">
+            <section id="slideshow" class="content-section active">
+                <h2>Slideshow Management</h2>
+                <div class="slideshow-actions mb-4">
+                    <button class="btn btn-primary" id="addSlideBtn">
+                        <i class="fas fa-plus"></i> Add New Slide
+                    </button>
+                </div>
+                <div id="slideshow-content"></div>
+
+                <div class="modal fade" id="addSlideModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add New Slide</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addSlideForm">
+                                    <div class="mb-3">
+                                        <label for="slideImage" class="form-label">Image</label>
+                                        <input type="file" class="form-control" id="slideImage" accept="image/*" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="slideTitle" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="slideTitle" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="slideDescription" class="form-label">Description</label>
+                                        <textarea class="form-control" id="slideDescription" rows="3" required></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" id="saveSlideBtn">Save Slide</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="events" class="content-section">
+                <h2>Events Management</h2>
+                <div class="events-actions mb-4">
+                    <button class="btn btn-primary" id="addEventBtn">
+                        <i class="fas fa-plus"></i> Add New Event
+                    </button>
+                </div>
+                <div id="events-content"></div>
+
+                <!-- Event Modal -->
+                <div class="modal fade" id="eventModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">Add New Event</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="eventForm">
+                                    <div class="mb-3">
+                                        <label for="eventTitle" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="eventTitle" name="title" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="eventDescription" class="form-label">Description</label>
+                                        <textarea class="form-control" id="eventDescription" name="description" rows="3" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="eventDate" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="eventDate" name="date" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="eventDays" class="form-label">Day/s</label>
+                                        <input type="number" class="form-control" id="eventDays" name="days" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" id="saveEventBtn">Save Event</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gallery" class="content-section">
+                <h2>Gallery Management</h2>
+                <div class="gallery-actions mb-4">
+                    <button class="btn btn-primary" id="addAlbumBtn">
+                        <i class="fas fa-plus"></i> Add New Album
+                    </button>
+                </div>
+                <div class="row" id="gallery-content">
+                    <!-- Albums will be displayed here -->
+                </div>
+
+                <!-- Add/Edit Album Modal -->
+                <div class="modal fade" id="addAlbumModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">Add New Album</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="albumForm">
+                                    <div class="mb-3">
+                                        <label for="albumImage" class="form-label">Cover Image</label>
+                                        <input type="file" class="form-control" id="albumImage" accept="image/*" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="albumTitle" class="form-label">Album Title</label>
+                                        <input type="te xt" class="form-control" id="albumTitle" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <small id="albumUploadStatus" class="form-text text-muted" style="display: none;"></small>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" id="saveAlbumBtn">Save Album</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Management Modal -->
+                <div class="modal fade" id="photoModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="photoModalTitle">Manage Photos</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <div>
+                                        <button class="btn btn-primary" id="addPhotoBtn">
+                                            <i class="fas fa-plus"></i> Add New Photo
+                                        </button>
+                                        <button class="btn btn-secondary ms-2" id="toggleEditMode">
+                                            <i class="fas fa-edit"></i> Toggle Edit Mode
+                                        </button>
+                                    </div>
+                                    <div id="editModeControls" style="display: none;">
+                                        <button class="btn btn-danger" id="deleteSelectedBtn">
+                                            <i class="fas fa-trash"></i> Delete Selected
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Add/Edit Photo Form -->
+                                <form id="photoForm" class="mt-4" style="display: none;">
+                                    <h6 id="photoFormTitle">Add New Photo</h6>
+                                    <div class="mb-3">
+                                        <label for="photoImage" class="form-label">Photos (You can select multiple photos)</label>
+                                        <input type="file" class="form-control" id="photoImage" accept="image/*" multiple required>
+                                    </div>
+                                </form>
+
+                                <div class="row" id="photos-container">
+                                    <!-- Photos will be displayed here -->
+                                </div>
+                                <small id="photoUploadStatus" class="form-text text-muted" style="display: none;"></small>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="savePhotoBtn" style="display: none;">Save Photo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="attendance" class="content-section">
+                <h2>Attendance Management</h2>
+                <div class="attendance-actions mb-4">
+                    <button class="btn btn-primary" id="createAttendanceBtn">
+                        <i class="fas fa-plus"></i> Create New Attendance
+                    </button>
+                    <button class="btn btn-success ms-2" id="createFromEventBtn">
+                        <i class="fas fa-calendar-plus"></i> Create from Event
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Session</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceList">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal fade" id="createAttendanceModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Create New Attendance</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="attendanceForm">
+                                    <div class="mb-3">
+                                        <label for="attendanceTitle" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="attendanceTitle" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="attendanceDate" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="attendanceDate" required>
+                                    </div>
+                                    <p>Session</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioMorning" value="Morning">
+                                        <label class="form-check-label" for="radioMorning">
+                                          Morning
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioAfternoon" value="Afternoon">
+                                        <label class="form-check-label" for="radioAfternoon">
+                                          Afternoon
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioWholeDay" value="Whole Day" checked>
+                                        <label class="form-check-label" for="radioWholeDay">
+                                          Whole Day
+                                        </label>
+                                    </div>                                    
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" id="saveAttendanceBtn">Create Attendance</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="createFromEventModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Create Attendance from Event</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="eventAttendanceForm">
+                                    <div class="mb-3">
+                                        <label for="eventSelect" class="form-label">Select Event</label>
+                                        <select class="form-control" id="eventSelect" required>
+                                        </select>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="eventSession" id="eventSessionMorning" value="Morning">
+                                        <label class="form-check-label" for="eventSessionMorning">
+                                        Morning
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="eventSession" id="eventSessionAfternoon" value="Afternoon">
+                                        <label class="form-check-label" for="eventSessionAfternoon">
+                                        Afternoon
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="eventSession" id="eventSessionWhole" value="Whole Day" checked>
+                                        <label class="form-check-label" for="eventSessionWhole">
+                                        Whole Day
+                                        </label>
+                                    </div>
+  
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" id="saveEventAttendanceBtn">Create Attendance</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="editAttendanceModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit Attendance</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="editAttendanceForm">
+                                    <input type="hidden" id="editAttendanceId">
+                                    <div class="mb-3">
+                                        <label for="editAttendanceTitle" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="editAttendanceTitle" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editAttendanceDate" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="editAttendanceDate" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" id="updateAttendanceBtn">Update Attendance</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- BOOTY strap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Auth and Config Scripts -->
+    <script src="../../config.js"></script>
+    <script src="../../auth.js"></script>
+    <!-- Custom JS -->
+    <script src="../../resources/js/dashboard.js"></script>
+    <script src="../../resources/js/slideshow.js"></script>
+    <script src="../../resources/js/events.js"></script>
+    <script src="../../resources/js/gallery.js"></script>
+    <script src="../../resources/js/attendance.js"></script>
+</body>
+</html>

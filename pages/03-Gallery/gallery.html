@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../resources/css/gallery.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <image class="return-btn" onclick="history.back()" src="../../global/images/returnArrow.svg"></image>
+        <h1 class="title">My Photo Gallery</h1>
+    </nav>
+
+    <!-- Gallery Section -->
+     
+    <div class="gallery">
+        <!-- This is how the image look like, i just put this on comment cause the images are automatically rendered <div class="photo" onclick="openLightbox(0)"><img src="../../resources/images/galleryPhotos/image1.png" alt="Image 1"></div> -->
+
+    </div>
+
+    <div class="lightbox" id="lightbox" style="display: none;">
+        <div class="lightbox-inner">
+            <button onclick="prevPhoto()">Previous</button>
+            <img id="lightbox-img" src="" alt="">
+            <button onclick="nextPhoto()">Next</button>
+        </div>
+        <a id="download-btn" download><button>Download</button></a>
+        <button onclick="closeLightbox()">Close</button>
+    </div>
+
+    <script>
+
+    </script>
+
+    <script src="../../resources/js/gallery.js"></script>
+</body>
+</html>

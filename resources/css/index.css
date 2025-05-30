@@ -1,0 +1,207 @@
+@font-face {
+    font-family: 'JejuGothic';
+      src:  url('../../global/fonts/JejuGothic/JejuGothic.ttf.woff') format('woff'),
+      url('../../global/fonts/JejuGothic/JejuGothic.ttf.svg#JejuGothic') format('svg'),
+      url('../../global/fonts/JejuGothic/JejuGothic.ttf.eot'),
+      url('../../global/fonts/JejuGothic/JejuGothic.eot?#iefix') format('embedded-opentype'); 
+      font-weight: normal;
+      font-style: normal;
+}
+
+
+body{
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+#particleCanvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    display: block;
+    opacity: 0.07;
+}
+
+.Level1{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../../resources/images/StiDavao.png');
+    background-position: center;
+    background-size: 110%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Level2{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgb(0, 0, 0));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    -webkit-backdrop-filter: blur(5px) saturate(1);
+    backdrop-filter: blur(5px) saturate(1);
+    
+}
+
+/* LEVEL2 CHILDREN */
+.Lev2Child{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container1{
+    width: 60%;
+    text-align: center;
+}.Logo{
+    margin-bottom: 10px;
+}.Header{
+    font-family: 'JejuGothic';
+    color: #ffffff;
+    font-size: 300%;
+    letter-spacing: 0.4em;
+    font-weight: 100;
+    margin: 0;
+    word-break: break-word;
+}.SubHeader{
+    font-family: 'JejuGothic';
+    color: #FFF200;
+    font-size: 90%;
+    letter-spacing: 0.2em;
+    font-weight: 1;
+    margin: 0;
+}.LoginButton{
+    margin-top: 3%;
+    background-color: rgba(0, 0, 0, 0);
+    border: solid 0.1px #FFF200;
+    padding: .6em 1.6em .6em 1.6em;
+    font-family: 'JejuGothic';
+    color: white;
+    font-size: 1.2em;
+    transition: background-color .5s ease;
+}
+
+.Container2{
+    width: 60%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1.5%;
+    text-align: center;
+}.Footer{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff59;
+    font-weight: 1%;
+}
+
+
+
+
+.ifStudentPopup{
+    z-index: 200;
+    position: absolute;
+
+    height: 100vh;
+    width: 100%;
+
+    align-content: center;
+    justify-items: center;
+
+    backdrop-filter: blur(10px);
+
+    color: rgb(255, 0, 0);
+
+    font-family: JejuGothic;
+}.hide{
+    display: none;
+}.show{
+    display: block;
+}
+
+
+.wrapper {
+    height: fit-content;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    z-index: 100;
+    bottom: 1px;
+  }
+  
+  .typing-demo {
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: .5em;
+    color: rgb(36, 182, 0);
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+
+
+@media (max-width: 768px) {
+    .Container1,
+    .Container2 {
+        width: 90%;
+    }
+
+    .Header {
+        font-size: 180%;
+        letter-spacing: 0.2em;
+        text-align: center;
+        word-wrap: break-word;
+    }
+
+    .SubHeader {
+        font-size: 80%;
+        text-align: center;
+        padding: 0 1em;
+    }
+
+    .LoginButton {
+        font-size: 1em;
+        padding: 0.5em 1.2em;
+    }
+
+    .Footer {
+        font-size: 0.8em;
+        padding: 0 1em;
+    }
+
+    .Logo {
+        width: 350px;
+        height: auto;
+    }
+
+    .typing-demo {
+        font-size: 0.4em;
+        width: 90%;
+    }
+}
+
+

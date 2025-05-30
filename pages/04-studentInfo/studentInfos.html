@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This website was created by Skibidi Cjay.">
+    <title>Student Information</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://alcdn.msauth.net/browser/2.23.0/js/msal-browser.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="../../resources/css/studentInfo.css">
+    <link rel="stylesheet" href="../../global/fonts/fonts.css">
+</head>
+<body>
+    <nav class="navbar">
+        <image class="return-btn" onclick="history.back()" src="../../global/images/returnArrow.svg"></image>
+        <h1 class="title">Student Info</h1>
+    </nav>
+
+    <div class="container">
+        <div class="student-info-container">
+            <div class="qr-section">
+                <img id="qr-code-display" src="#" alt="qr code">
+                <button class="download-btn" id="downloadQrBtn">Download QR</button>
+            </div>
+            <div class="info-section">
+                <h2 id="profileName">User Name</h2>
+                <p id="profileEmail">user@davao.sti.edu.ph</p>
+                <button class="profile-btn logout" style="background-color: rgb(151, 0, 0); color: white; padding-left:3%; padding-right:3%; padding-top:2%; padding-bottom:2%; border: none; border-radius: 10%;" onclick="signOut()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../../resources/js/studentInfo.js"></script>
+    <script src="studentInfo_auth.js"></script>
+</body>
+</html> 

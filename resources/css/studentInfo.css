@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #202020;
+    text-align: center;
+    padding-top: 5em; 
+}
+
+.navbar {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(233, 233, 233, 0.9);
+    color: black;
+    padding: 15px;
+    z-index: 1000;
+}
+
+.return-btn {
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    height: 2em;
+}
+
+.return-btn:hover {
+    background: #777;
+}
+
+.title {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.student-info-container {
+    display: flex;
+    gap: 2em;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2em;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+#qr-code-display {
+    width: 200px;
+    height: 200px;
+    background: white;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+.download-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.download-btn:hover {
+    background: #45a049;
+}
+
+.info-section {
+    flex: 1;
+    text-align: left;
+    color: white;
+}
+
+.info-section h2 {
+    margin: 0 0 0.5em 0;
+    font-size: 2em;
+}
+
+.info-section p {
+    margin: 0;
+    font-size: 1.2em;
+    color: #ccc;
+}
+
+/* Make the navbar responsive */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.2em;
+    }
+}
+
+/* Make the container responsive */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1em;
+    }
+
+    .student-info-container {
+        flex-direction: column;
+        padding: 1em;
+        gap: 1em;
+    }
+
+    .qr-section {
+        width: 100%;
+    }
+
+    #qr-code-display {
+        width: 180px;
+        height: 180px;
+    }
+
+    .info-section {
+        text-align: center;
+        width: 100%;
+    }
+
+    .info-section h2 {
+        font-size: 1.5em;
+    }
+
+    .info-section p {
+        font-size: 1em;
+    }
+}
+
+/* small mobile devices */
+@media screen and (max-width: 480px) {
+    body {
+        padding-top: 4em;
+    }
+
+    .container {
+        padding: 0.5em;
+    }
+
+    #qr-code-display {
+        width: 150px;
+        height: 150px;
+        padding: 0.5em;
+    }
+
+    .download-btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    .info-section h2 {
+        font-size: 1.3em;
+    }
+
+    .info-section p {
+        font-size: 0.9em;
+    }
+}

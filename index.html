@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STID</title>
+    <link rel="icon" type="image/svg+xml" href="resources/STID_Logo.svg">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://alcdn.msauth.net/browser/2.23.0/js/msal-browser.min.js"></script>
+
+    <link rel="stylesheet" href="resources/css/index.css?v=2">
+</head>
+<body>
+
+    <div class="ifStudentPopup hide">
+        <h1>Please login with STI student account :></h1>
+    </div>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="Level1">
+        <div class="wrapper">
+            <div class="typing-demo">
+              Created by the group 4
+            </div>
+        </div>
+        <div class="Level2">
+            <div class="Container1 Lev2Child">
+                <img src="resources/STID_Logo.svg" alt="STID Logo" class="Logo">
+                <h1 class="Header">MADAYAW eSTIay</h1>
+                <p class="SubHeader">Stay Connected, Celebrate Moments, Embrace School Spirit!</p>
+                <button class="LoginButton" onclick="signIn()"><span id="loginSpan">Login</span></button>
+            </div>
+            <div class="Container2 Lev2Child">
+                <p class="Footer">STID is an exclusive platform designed for STI College Davao, dedicated to keeping students, faculty, and parents updated with the latest happenings in the school</p>
+            </div>
+        </div>
+    </div>
+  
+
+    
+    <!-- Frontend -->
+    <script src="resources/js/index.js"></script>
+
+    <!-- Backend -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.4.4/qrcode.js" integrity="sha512-oxrVyBhqnzQ0BzuM0A/6dEIk0alz0p4SpDRaWvtuUoarIc8rnL5lVniHG5Dp21MRFojcQcmKHjaskNXhSaUPPw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Authentick -->
+    <script src="auth.js"></script>
+</body>
+</html> 
+
+
+
+
+<!--
+
+SOURCES
+
+    Particle Web Background Animation
+    https://codepen.io/Hadevsh/pen/bNGGRrZ
+
+    CSS Typing Effect
+    https://codepen.io/denic/pen/GRoOxbM
+
+-->

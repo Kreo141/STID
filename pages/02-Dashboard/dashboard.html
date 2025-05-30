@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This website was created by Skibidi Cjay.">
+    <title>Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://alcdn.msauth.net/browser/2.23.0/js/msal-browser.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="../../resources/css/dashboard.css">
+    <link rel="stylesheet" href="../../global/fonts/fonts.css">
+
+</head> 
+<body>
+    
+    <button id="menu-toggle" class="menu-toggle" style="color: white;">&#9776;</button>
+    <header>
+        <nav class="nav-links">
+            <a href="#" class="nav-link activePage" data-section="home">HOME</a>
+            <a href="#" class="nav-link" data-section="gallery">GALLERY</a>
+        </nav>
+        <div class="profile-image">
+            <div class="profile" id="profile">X</div>
+        </div>
+    </header>
+
+    <!-- Profile Card -->
+    <div class="profile-card" id="profileCard">
+        <div class="profile-card-content">
+            <div class="profile-info">
+                <h3 id="profileName">User Name</h3>
+                <p id="profileEmail">user@davao.sti.edu.ph</p>
+            </div>
+            <div class="profile-buttons">
+                <img id="qr-code-display" src="#" alt="qr code">
+                <button class="profile-btn" id="downloadQrBtn">Download QR</button>
+                <button class="profile-btn" id="studentInfoBtn">Student Info</button>
+                <button class="profile-btn logout" onclick="signOut()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="sidebar">
+        <div class="profile-image_sidebar">
+            <div class="profile" id="sidebar_profile">X</div>
+        </div>
+        <a href="#" class="nav-link activePage" data-section="home">HOME</a>
+        <a href="#" class="nav-link" data-section="gallery">GALLERY</a>
+        <a class="" id="gotoStudentInfo">Student Info</a>
+    </div>
+
+
+
+    <!-- HOME HOME HOME HOME -->
+    <div id="home" class="section" style="display: block;">
+        
+        <div class="popUpContainer" id="popUpContainer" onclick="closePopUp(event)">
+            <div class="popUp">
+                <button class="closeButton" onclick="closePopUp(event)">×</button>
+                <h2>Event Title</h2>
+                <p>January 01, 2025</p>
+                <div class="popUp-content">
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="slideshow-container">
+            <div class="gradient"></div>
+            <div id="slideContainer">
+
+            </div>
+            <div class="dots">
+
+            </div>
+        </div>
+
+        <!-- EVENTS EVENTS EVENTS EVENTS -->
+        <div class="insideEvents">
+            <div class="timeline-container">
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- EVENTS EVENTS EVENTS EVENTS 
+    <div id="events" class="section" style="display: none;">
+
+    </div> 
+    -->
+
+
+    <!-- GALLERY GALLERY GALLERY GALLERY-->
+    <div id="gallery" class="section" style="display: none;">
+        <div class="insideGallery" id="insideGallery">
+            <div class="gallerySelection" id="albumGallery" >
+      
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- BULLETIN BULLETIN BULLETIN BULLETIN --> 
+    <div id="bulletin" class="section" style="display: none;">
+        <div class="bulletinContainer">
+            <div class="announcement">
+
+            </div>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+    <button onclick="signOut()">Sign Out</button>
+
+    <script>
+    // SWITCH PAGE LOGIC
+    const naviLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+
+    naviLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Remove active class from all links
+            naviLinks.forEach(l => l.classList.remove('activePage'));
+            link.classList.add('activePage');
+
+            // Hide all sections and show the selected one
+            const selectedSection = link.getAttribute('data-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(selectedSection).style.display = 'block';
+        });
+    });
+    </script>
+
+    <script src="../../resources/js/dashboard.js"></script>
+    <script src="../../auth.js"></script>
+
+    
+</body>
+</html>
+
+
+
+
+<!--
+    SOURCES
+        Scrollbar (Style 16)
+        https://codepen.io/devstreak/pen/dMYgeO
+
+-->
